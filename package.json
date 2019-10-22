@@ -1,0 +1,32 @@
+{
+  "name": "nashAutomation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/cli": "^5.15.2",
+    "@wdio/local-runner": "^5.15.2",
+    "@wdio/mocha-framework": "^5.15.1",
+    "@wdio/spec-reporter": "^5.15.2",
+    "@wdio/sync": "^5.15.1",
+    "@wdio/selenium-standalone-service": "^5.15.0",
+    "chromedriver": "^77.0.0",
+    "ts-node": "^8.4.1",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4",
+    "webdriverio": "^5.15.1",
+    "wdio-chromedriver-service": "^5.0.2"
+  },
+  "dependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.14.22"
+  }
+}

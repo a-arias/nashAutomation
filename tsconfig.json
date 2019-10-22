@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "*": [ "./*" ],
+            "src/*": ["src/*"]
+        },
+        "types": ["node", "@wdio/sync", "@wdio/mocha-framework"],
+        "experimentalDecorators": true, 
+        "emitDecoratorMetadata": true
+    },
+    "include": [
+        "./specs/**/*.ts"
+    ]
+}
