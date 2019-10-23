@@ -1,15 +1,16 @@
 import BasePage from './basePage';
 import DashboardPage from './dashboardPage';
+import ILoginPage from '../interfaces/ILoginPage';
 
 const selectors = require('src/selectors/login.json');
-export default class LoginPage extends BasePage {
+export default class LoginPage extends BasePage implements ILoginPage {
     /**
      * Locators
      */
-    private get usernameInput() {return $(selectors.username);}
-    private get passwordInput() {return $(selectors.password);}
-    public get loginButton() {return $(selectors.loginButton);}
-    public get loginError() {return $(selectors.loginError);}
+     get usernameInput() {return $(selectors.username);}
+     get passwordInput() {return $(selectors.password);}
+     get loginButton() {return $(selectors.loginButton);}
+     get loginError() {return $(selectors.loginError);}
 
     /**
      * Get loginError element text 
