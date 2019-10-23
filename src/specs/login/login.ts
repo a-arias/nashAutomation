@@ -1,11 +1,10 @@
 import { expect } from 'chai';
-
 import LoginPage from '../../pages/loginPage';
 import LandingPage from '../../pages/landingPage';
 import DashboardPage from '../../pages/dashboardPage';
 
-const username = 'aarias@edrnet.com';
-const password = 'Bronce.edr.1';
+const username = process.env.LOGIN_USER;
+const password = process.env.LOGIN_PASSWORD;
 const incorrectPassword = 'qwerty100';
 
 describe('Login functionality', () => {

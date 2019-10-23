@@ -138,6 +138,7 @@ exports.config = {
 
     //wdio.conf.js
     before: function() {
+        require('dotenv').config()
         require('ts-node').register({ files: true })
     },
 
