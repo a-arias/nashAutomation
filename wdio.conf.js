@@ -140,6 +140,10 @@ exports.config = {
     before: function() {
         require('ts-node').register({ files: true })
     },
+
+    afterTest: function () {
+        browser.reloadSession();
+      }
     //
     // =====
     // Hooks

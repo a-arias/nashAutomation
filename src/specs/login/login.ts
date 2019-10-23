@@ -1,9 +1,37 @@
-const assert = require('assert')
+import { expect } from 'chai';
 
-describe('webdriver.io page', () => {
-    it('should have the right title', () => {
-        browser.url('https://webdriver.io')
-        const title = browser.getTitle()
-        assert.strictEqual(title, 'WebdriverIO · Next-gen WebDriver test framework for Node.js')
+import LoginPage from '../../pages/loginPage';
+import LandingPage from '../../pages/landingPage';
+import DashboardPage from '../../pages/dashboardPage';
+
+const username = 'aarias@edrnet.com';
+const password = 'Bronce.edr.1';
+const incorrectPassword = 'qwerty100';
+
+describe('Login functionality', () => {
+    let landing : LandingPage;
+    let login: LoginPage;
+
+    before('setup', () => {
+        landing = new LandingPage();
+        login = new LoginPage();
+    });
+
+    it('should perform a correct login with correct credentials', () => {
+        landing.open();
+        landing.clickLoginButton();
+
+        const dashboard : DashboardPage = login.loginWithCredentials(username, password);
+        expect(dashboard.getHeadingText()).to.equal('Move work forward');
+        expect(dashboard.getSubHeadingText()).to.equal('Tools for teams, from startup to enterprise');
+        expect(dashboard.userFooterIsPresent()).to.be.true;
+    })
+
+    it('should Not perform a correct login because invalid password', () => {
+        landing.open();
+        landing.clickLoginButton();
+
+        login.loginWithCredentials(username, incorrectPassword);
+        expect(login.getLoginErrorText()).to.equal('Incorrect email address and / or password.\nDo you need help logging in?');
     })
 })
