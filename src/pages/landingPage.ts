@@ -6,7 +6,7 @@ export default class LandingPage extends BasePage {
     /**
      *Locators
     */
-    private get loginLink() { return $(selectors.loginLink);}
+    private get loginLink() : WebdriverIO.Element { return $(selectors.loginLink);}
 
     /**
      * Opens LandingPage page

@@ -7,10 +7,10 @@ export default class LoginPage extends BasePage implements ILoginPage {
     /**
      * Locators
      */
-     get usernameInput() {return $(selectors.username);}
-     get passwordInput() {return $(selectors.password);}
-     get loginButton() {return $(selectors.loginButton);}
-     get loginError() {return $(selectors.loginError);}
+     get usernameInput() : WebdriverIO.Element {return $(selectors.username);}
+     get passwordInput() : WebdriverIO.Element {return $(selectors.password);}
+     get loginButton() : WebdriverIO.Element {return $(selectors.loginButton);}
+     get loginError() : WebdriverIO.Element {return $(selectors.loginError);}
 
     /**
      * Get loginError element text 

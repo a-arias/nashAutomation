@@ -6,9 +6,9 @@ export default class DashboardPage extends BasePage {
     /**
      *Locators
     */
-    private get getDashboardHeadingElement() {return $(selectors.headingText);}
-    private get getDashboardSubHeadingElement() {return $(selectors.subHeadingText);}
-    private get getDashboardFooterElement() {return $(selectors.footer);}
+    private get getDashboardHeadingElement() : WebdriverIO.Element {return $(selectors.headingText);}
+    private get getDashboardSubHeadingElement() : WebdriverIO.Element {return $(selectors.subHeadingText);}
+    private get getDashboardFooterElement() : WebdriverIO.Element {return $(selectors.footer);}
 
     /**
      *Get heading element text 
