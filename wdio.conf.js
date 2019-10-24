@@ -143,16 +143,6 @@ exports.config = {
             'tsconfig-paths/register'
           ],
     },
-
-    //wdio.conf.js
-    before: function() {
-        require('dotenv').config()
-        require('ts-node').register({ files: true })
-    },
-
-    afterTest: function () {
-        browser.reloadSession();
-      }
     //
     // =====
     // Hooks
@@ -183,8 +173,10 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function() {
+        require('dotenv').config()
+        require('ts-node').register({ files: true })
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -218,9 +210,9 @@ exports.config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    // afterTest: function(test, context, { error, result, duration, passed }) {
-    // },
-
+    afterTest: function () {
+        browser.reloadSession();
+      }
 
     /**
      * Hook that gets executed after the suite has ended
