@@ -1,20 +1,26 @@
-import BasePage from './BasePage';
-import loginPage from './loginPage';
-//const landingPageSelectors = require('../pagesSelectors/landingPage');
+import BasePage from './basePage';
+import loginPage from './loginPage'
+import LoginPage from './loginPage';
+const selectors = require('src/selectors/landing.json');
+export default class LandingPage extends BasePage {
+    /**
+     *Locators
+    */
+    private get loginLink() : WebdriverIO.Element { return $(selectors.loginLink);}
 
-export default class LandingPage extends BasePage{
-
-    constructor() {
-        super();
+    /**
+     * Opens LandingPage page
+     */
+    open() {
+        super.open('');
     }
 
-    get loginButton2() : any { return browser.$('#gray_link'); }
-
-    get loginButton() : WebdriverIO.Element  { return $('#gray_link'); }
-
-    clickLoginButton() : LoginPage {
-        this.loginButton2.click();
-        return new LoginPage;
+    /**
+     * Clicks login button
+     */
+    clickLoginButton() {
+        this.loginLink.click();
+        let Login : LoginPage = new LoginPage;
+        Login.loginButton.waitForDisplayed();
     }
-
 }

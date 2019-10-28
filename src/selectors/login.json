@@ -1,0 +1,7 @@
+{
+    "username": "#username",
+    "password": "#password",
+    "loginButton": "#login-submit",
+    "loginError": "#login-error span"
+}
+  

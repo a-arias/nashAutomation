@@ -19,9 +19,16 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: [
-        './src/specs/**/*.ts'
-    ],
+    // define all tests
+    specs: ['./src/specs/**/*.ts',],
+    suites: {
+        login: [
+            './src/specs/login/login.ts',
+        ],
+        navigation: [
+            './src/specs/dashboard/navigation.ts',
+        ],
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -48,18 +55,16 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    // chromeOptions: {
+    //     args: ['disable-extensions']
+    // },
+    capabilities: {
+        myChromeBrowser: {
+            capabilities: {
+                browserName: 'chrome'
+            }
+        }
+    },
     //
     // ===================
     // Test Configurations
@@ -67,7 +72,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:
@@ -123,7 +128,11 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
+    reporters: ['spec',['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
  
     //
     // Options to be passed to Mocha.
@@ -134,11 +143,6 @@ exports.config = {
         compilers: [
             'tsconfig-paths/register'
           ],
-    },
-
-    //wdio.conf.js
-    before: function() {
-        require('ts-node').register({ files: true })
     },
     //
     // =====
@@ -170,8 +174,10 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function() {
+        require('dotenv').config()
+        require('ts-node').register({ files: true });
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -188,8 +194,9 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function (test, context) {
+        browser.reloadSession();
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -198,17 +205,18 @@ exports.config = {
     // },
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
-     * afterEach in Mocha)
+     * afterEach in Mocha)npm
      */
     // afterHook: function (test, context, { error, result, duration, passed }) {
     // },
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    // afterTest: function(test, context, { error, result, duration, passed }) {
-    // },
-
-
+    afterTest: function(test) {
+        if (test.error !== undefined) {
+            browser.takeScreenshot();
+          }
+      },
     /**
      * Hook that gets executed after the suite has ended
      * @param {Object} suite suite details
@@ -240,6 +248,7 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that ran
      */
     // afterSession: function (config, capabilities, specs) {
+
     // },
     /**
      * Gets executed after all workers got shut down and the process is about to exit. An error
