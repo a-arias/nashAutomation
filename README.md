@@ -16,27 +16,33 @@ npm test
 ```
 
 ## Generating Allure Report
-```npm report
+```
+npm report
 ```
 
 ## Executing tests in development environment
-```npm run test_development
+```
+npm run test_development
 ```
 
 ## Executing in BrowserStack using different browsers
-```npm run test_browserStack 
+```
+npm run test_browserStack 
 ```
 
 ## Executing in BrowserStack in parallel
-```npm run test_browserStackParallel
+```
+npm run test_browserStackParallel
 ```
 
 ## Executing API tests
-```npm run test_api
+```
+npm run test_api
 ```
 
 ## Executing API Mocks
-```npm run test_mocks
+```
+npm run test_mocks
 ```
 
 
