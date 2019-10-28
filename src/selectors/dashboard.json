@@ -1,5 +1,12 @@
 {
-    "headingText": "h1.heading",
+    "headingText": ".component--heading",
+    "headingTextTextBlock": ".component--heading-textblock",
     "subHeadingText": "h2.heading",
-    "footer": "#footer"
+    "footer": "#footer",
+    "tryForFreeButton": ".global-nav--wac__button--primary",
+    "buyNowButton": ".global-nav--wac__button--secondary",
+    "searchButton": ".global-nav--wac__search-icon",
+    "productInput": ".global-nav--wac__search-input",
+    "searchSubmitButton": ".global-nav--wac__search-submit",
+    "searchResultList": "#wac-search__search-results-container"
 }
