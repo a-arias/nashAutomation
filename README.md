@@ -1,7 +1,7 @@
 # Nash Automation example
 
 # WebdriverIO_and_TypeScript_BoilerPlate
-This is an awesome boilerplate project that uses WebdriverIO v5 and TypeScript V3, this includes examples of PageObject patter, allure and spec report with screenshots for failing tests, integration with BrowserStack to test in real devices with different browser in parallel, Chai js for assertions, multiple environment configuration and API mocks and request testing.
+This is an awesome boilerplate project that uses WebdriverIO v5 and TypeScript V3, this includes examples of PageObject pattern, allure and spec report with screenshots for failing tests, integration with BrowserStack to test on real devices with different browsers in parallel, Chai js for assertions, multiple environment configuration and API mocks and request testing.
 
 ## Getting Started
 ```
