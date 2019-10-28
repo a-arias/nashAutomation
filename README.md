@@ -47,6 +47,9 @@ npm run test_mocks
 
 
 ## Why TypeScript
+TypeScript simplifies JavaScript code, making it easier to read and debug. TypeScript is open source. TypeScript provides highly productive development tools for JavaScript IDEs and practices, like static checking. TypeScript makes code easier to read and understand.
+
+We can see intellisense helping out here:
 ![intellisense](https://github.com/jpolley/WebdriverIO_v5_TypeScript/blob/master/src/assets/intellisense.png)
 
 You no longer need to explicitly compile your TypeScript to JavaScript using the command `tsc`. This project uses ts-node/register and tsconfig-paths as detailed on the [WebdriverIO TypeScript setup](https://webdriver.io/docs/typescript.html) page. 
